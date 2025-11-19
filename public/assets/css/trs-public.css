@@ -1,7 +1,170 @@
 /**
- * The Rink Society Public Styles
- *
+ * Public Frontend Styles
+ * 
  * @package TheRinkSociety
  */
 
-/* Public frontend styles will go here */
+/* General Container Styles */
+.trs-player-profile,
+.trs-team-roster,
+.trs-games-schedule,
+.trs-leaderboard,
+.trs-tournament-standings,
+.trs-player-stats {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Player Profile */
+.trs-player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.trs-player-header h2 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.trs-jersey-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: #0073aa;
+    line-height: 1;
+}
+
+.trs-player-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.trs-info-item {
+    padding: 10px;
+    background: #f7f7f7;
+    border-radius: 4px;
+}
+
+/* Tables */
+.trs-roster-table,
+.trs-schedule-table,
+.trs-leaderboard-table,
+.trs-standings-table,
+.trs-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.trs-roster-table th,
+.trs-schedule-table th,
+.trs-leaderboard-table th,
+.trs-standings-table th,
+.trs-stats-table th {
+    background: #0073aa;
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #005177;
+}
+
+.trs-roster-table td,
+.trs-schedule-table td,
+.trs-leaderboard-table td,
+.trs-standings-table td,
+.trs-stats-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.trs-roster-table tbody tr:hover,
+.trs-schedule-table tbody tr:hover,
+.trs-leaderboard-table tbody tr:hover,
+.trs-standings-table tbody tr:hover {
+    background: #f9f9f9;
+}
+
+/* Game Status Colors */
+.trs-game-scheduled {
+    opacity: 0.8;
+}
+
+.trs-game-in-progress {
+    background: #fff3cd !important;
+}
+
+.trs-game-completed {
+    background: #d4edda !important;
+}
+
+.trs-game-cancelled {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .trs-player-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .trs-jersey-number {
+        margin-top: 10px;
+    }
+
+    .trs-roster-table,
+    .trs-schedule-table,
+    .trs-leaderboard-table,
+    .trs-standings-table,
+    .trs-stats-table {
+        font-size: 14px;
+    }
+
+    .trs-roster-table th,
+    .trs-schedule-table th,
+    .trs-leaderboard-table th,
+    .trs-standings-table th,
+    .trs-stats-table th,
+    .trs-roster-table td,
+    .trs-schedule-table td,
+    .trs-leaderboard-table td,
+    .trs-standings-table td,
+    .trs-stats-table td {
+        padding: 8px 6px;
+    }
+}
+
+/* Headings */
+.trs-player-profile h2,
+.trs-team-roster h2,
+.trs-games-schedule h2,
+.trs-leaderboard h2,
+.trs-tournament-standings h2,
+.trs-player-stats h2 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Empty States */
+.trs-player-profile p,
+.trs-team-roster p,
+.trs-games-schedule p,
+.trs-leaderboard p,
+.trs-tournament-standings p,
+.trs-player-stats p {
+    color: #666;
+    font-style: italic;
+}

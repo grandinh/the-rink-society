@@ -38,6 +38,11 @@ class TRS_Core {
         if (is_admin()) {
             require_once TRS_PLUGIN_DIR . 'admin/class-trs-admin.php';
         }
+
+        // Load public shortcodes
+        if (!is_admin()) {
+            require_once TRS_PLUGIN_DIR . 'public/class-trs-shortcodes.php';
+        }
     }
 
     /**

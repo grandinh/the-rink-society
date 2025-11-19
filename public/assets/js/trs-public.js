@@ -1,13 +1,17 @@
 /**
- * The Rink Society Public JavaScript
- *
+ * Public Frontend JavaScript
+ * 
  * @package TheRinkSociety
  */
 
-(function() {
+(function($) {
     'use strict';
 
-    // Public JavaScript will go here
-    console.log('TRS Public loaded');
+    $(document).ready(function() {
+        // Add any public-facing JavaScript here
+        
+        // Example: Make tables responsive
+        $('.trs-roster-table, .trs-schedule-table, .trs-leaderboard-table, .trs-standings-table, .trs-stats-table').wrap('<div style="overflow-x:auto;"></div>');
+    });
 
-})();
+})(jQuery);
