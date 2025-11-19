@@ -125,7 +125,7 @@ class TRS_Core {
         wp_enqueue_script(
             'trs-public-js',
             TRS_PLUGIN_URL . 'public/assets/js/trs-public.js',
-            array(),
+            array('jquery'),
             $this->version,
             true
         );
