@@ -43,6 +43,9 @@ class TRS_Core {
         if (!is_admin()) {
             require_once TRS_PLUGIN_DIR . 'public/class-trs-shortcodes.php';
         }
+
+        // Load REST API
+        require_once TRS_PLUGIN_DIR . 'includes/class-trs-rest-api.php';
     }
 
     /**
