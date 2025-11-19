@@ -113,6 +113,16 @@ class TRS_Admin {
             'trs-settings',
             array($this, 'settings_page')
         );
+
+        // Stats (hidden page, accessed via Games)
+        add_submenu_page(
+            null, // Hidden from menu
+            __('Game Stats', 'the-rink-society'),
+            __('Game Stats', 'the-rink-society'),
+            'manage_options',
+            'trs-stats',
+            array($this, 'stats_page')
+        );
     }
 
     /**
@@ -182,6 +192,15 @@ class TRS_Admin {
     public function settings_page() {
         require_once TRS_PLUGIN_DIR . 'admin/pages/class-trs-settings-page.php';
         $page = new TRS_Settings_Page();
+        $page->render();
+    }
+
+    /**
+     * Stats page (hidden, accessed from games)
+     */
+    public function stats_page() {
+        require_once TRS_PLUGIN_DIR . 'admin/pages/class-trs-stats-page.php';
+        $page = new TRS_Stats_Page();
         $page->render();
     }
 

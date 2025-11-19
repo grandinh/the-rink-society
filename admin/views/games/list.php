@@ -74,7 +74,7 @@ $message = isset($_GET['message']) ? sanitize_text_field($_GET['message']) : '';
                         <td><span class="trs-status-<?php echo $game->status; ?>"><?php echo ucfirst($game->status); ?></span></td>
                         <td>
                             <a href="<?php echo admin_url('admin.php?page=trs-games&action=edit&id=' . $game->id); ?>" class="button button-small"><?php _e('Edit', 'the-rink-society'); ?></a>
-                            <a href="<?php echo admin_url('admin.php?page=trs-games&action=score&id=' . $game->id); ?>" class="button button-small"><?php _e('Score', 'the-rink-society'); ?></a>
+                            <a href="<?php echo admin_url('admin.php?page=trs-stats&game_id=' . $game->id); ?>" class="button button-small"><?php _e('Stats', 'the-rink-society'); ?></a>
                             <a href="<?php echo admin_url('admin.php?page=trs-games&action=delete&id=' . $game->id); ?>" class="button button-small button-link-delete"><?php _e('Delete', 'the-rink-society'); ?></a>
                         </td>
                     </tr>

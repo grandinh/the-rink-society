@@ -40,7 +40,7 @@ $away_team = $game->get_away_team();
 
         <p><strong><?php _e('Next Steps:', 'the-rink-society'); ?></strong></p>
         <ul>
-            <li><?php _e('Enter detailed player stats (coming in Phase 3)', 'the-rink-society'); ?></li>
+            <li><a href="<?php echo admin_url('admin.php?page=trs-stats&game_id=' . $game->id); ?>" class="button button-primary"><?php _e('Enter Player Stats', 'the-rink-society'); ?></a></li>
             <li><a href="<?php echo admin_url('admin.php?page=trs-games&action=edit&id=' . $game->id); ?>"><?php _e('Edit game details', 'the-rink-society'); ?></a></li>
         </ul>
     </div>

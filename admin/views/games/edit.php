@@ -63,7 +63,8 @@ $page_title = $edit_mode ? __('Edit Game', 'the-rink-society') : __('Add New Gam
         <hr>
         <h2><?php _e('Quick Actions', 'the-rink-society'); ?></h2>
         <p>
-            <a href="<?php echo admin_url('admin.php?page=trs-games&action=score&id=' . $game->id); ?>" class="button"><?php _e('Enter Stats', 'the-rink-society'); ?></a>
+            <a href="<?php echo admin_url('admin.php?page=trs-games&action=score&id=' . $game->id); ?>" class="button"><?php _e('Update Score', 'the-rink-society'); ?></a>
+            <a href="<?php echo admin_url('admin.php?page=trs-stats&game_id=' . $game->id); ?>" class="button button-primary"><?php _e('Enter Player Stats', 'the-rink-society'); ?></a>
         </p>
     <?php endif; ?>
 </div>
