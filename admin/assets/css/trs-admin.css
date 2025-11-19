@@ -1,0 +1,13 @@
+/**
+ * The Rink Society Admin Styles
+ *
+ * @package TheRinkSociety
+ */
+
+/* Admin page container */
+.trs-admin-wrap {
+    max-width: 1200px;
+    margin: 20px 0;
+}
+
+/* Future admin styles will go here */

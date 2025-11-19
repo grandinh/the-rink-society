@@ -1,0 +1,29 @@
+# WordPress
+*.log
+.DS_Store
+.htaccess
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Composer
+/vendor/
+composer.lock
+
+# Node
+node_modules/
+package-lock.json
+npm-debug.log
+
+# Build files
+/dist/
+*.min.js
+*.min.css
+
+# Environment
+.env
+.env.local
