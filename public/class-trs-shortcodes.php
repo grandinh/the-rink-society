@@ -19,14 +19,50 @@ class TRS_Shortcodes {
     private $season_repo;
 
     public function __construct() {
-        $this->player_repo = new TRS_Player_Repository();
-        $this->team_repo = new TRS_Team_Repository();
-        $this->game_repo = new TRS_Game_Repository();
-        $this->stats_repo = new TRS_Stats_Repository();
-        $this->tournament_repo = new TRS_Tournament_Repository();
-        $this->season_repo = new TRS_Season_Repository();
-
         $this->register_shortcodes();
+    }
+
+    // Lazy load repositories
+    private function get_player_repo() {
+        if (!$this->player_repo) {
+            $this->player_repo = new TRS_Player_Repository();
+        }
+        return $this->player_repo;
+    }
+
+    private function get_team_repo() {
+        if (!$this->team_repo) {
+            $this->team_repo = new TRS_Team_Repository();
+        }
+        return $this->team_repo;
+    }
+
+    private function get_game_repo() {
+        if (!$this->game_repo) {
+            $this->game_repo = new TRS_Game_Repository();
+        }
+        return $this->game_repo;
+    }
+
+    private function get_stats_repo() {
+        if (!$this->stats_repo) {
+            $this->stats_repo = new TRS_Stats_Repository();
+        }
+        return $this->stats_repo;
+    }
+
+    private function get_tournament_repo() {
+        if (!$this->tournament_repo) {
+            $this->tournament_repo = new TRS_Tournament_Repository();
+        }
+        return $this->tournament_repo;
+    }
+
+    private function get_season_repo() {
+        if (!$this->season_repo) {
+            $this->season_repo = new TRS_Season_Repository();
+        }
+        return $this->season_repo;
     }
 
     private function register_shortcodes() {
@@ -47,7 +83,7 @@ class TRS_Shortcodes {
             'id' => 0,
         ), $atts);
 
-        $player = $this->player_repo->get(intval($atts['id']));
+        $player = $this->get_player_repo()->get(intval($atts['id']));
         if (!$player) {
             return '<p>Player not found.</p>';
         }
@@ -66,12 +102,12 @@ class TRS_Shortcodes {
             'id' => 0,
         ), $atts);
 
-        $team = $this->team_repo->get(intval($atts['id']));
+        $team = $this->get_team_repo()->get(intval($atts['id']));
         if (!$team) {
             return '<p>Team not found.</p>';
         }
 
-        $players = $this->player_repo->get_by_team($team->id);
+        $players = $this->get_player_repo()->get_by_team($team->id);
 
         ob_start();
         include TRS_PLUGIN_DIR . 'public/templates/team-roster.php';
@@ -97,7 +133,7 @@ class TRS_Shortcodes {
         if ($atts['team_id']) $args['team_id'] = intval($atts['team_id']);
         if ($atts['status']) $args['status'] = sanitize_text_field($atts['status']);
 
-        $games = $this->game_repo->get_all($args);
+        $games = $this->get_game_repo()->get_all($args);
 
         ob_start();
         include TRS_PLUGIN_DIR . 'public/templates/games-schedule.php';
@@ -123,11 +159,11 @@ class TRS_Shortcodes {
         $type = sanitize_text_field($atts['type']);
 
         if ($type === 'points') {
-            $leaders = $this->stats_repo->get_points_leaders($args);
+            $leaders = $this->get_stats_repo()->get_points_leaders($args);
         } elseif ($type === 'goals') {
-            $leaders = $this->stats_repo->get_leaderboard('goal', $args);
+            $leaders = $this->get_stats_repo()->get_leaderboard('goal', $args);
         } elseif ($type === 'assists') {
-            $leaders = $this->stats_repo->get_leaderboard('assist', $args);
+            $leaders = $this->get_stats_repo()->get_leaderboard('assist', $args);
         } else {
             return '<p>Invalid leaderboard type.</p>';
         }
@@ -146,7 +182,7 @@ class TRS_Shortcodes {
             'id' => 0,
         ), $atts);
 
-        $tournament = $this->tournament_repo->get(intval($atts['id']));
+        $tournament = $this->get_tournament_repo()->get(intval($atts['id']));
         if (!$tournament) {
             return '<p>Tournament not found.</p>';
         }
@@ -169,7 +205,7 @@ class TRS_Shortcodes {
             'tournament_id' => 0,
         ), $atts);
 
-        $player = $this->player_repo->get(intval($atts['id']));
+        $player = $this->get_player_repo()->get(intval($atts['id']));
         if (!$player) {
             return '<p>Player not found.</p>';
         }
@@ -178,7 +214,7 @@ class TRS_Shortcodes {
         if ($atts['season_id']) $args['season_id'] = intval($atts['season_id']);
         if ($atts['tournament_id']) $args['tournament_id'] = intval($atts['tournament_id']);
 
-        $stats = $this->stats_repo->get_player_totals($player->id, $args);
+        $stats = $this->get_stats_repo()->get_player_totals($player->id, $args);
 
         ob_start();
         include TRS_PLUGIN_DIR . 'public/templates/player-stats.php';
