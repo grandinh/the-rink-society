@@ -33,6 +33,11 @@ class TRS_Core {
         if (file_exists(TRS_PLUGIN_DIR . 'includes/helpers/functions.php')) {
             require_once TRS_PLUGIN_DIR . 'includes/helpers/functions.php';
         }
+
+        // Load admin class
+        if (is_admin()) {
+            require_once TRS_PLUGIN_DIR . 'admin/class-trs-admin.php';
+        }
     }
 
     /**
